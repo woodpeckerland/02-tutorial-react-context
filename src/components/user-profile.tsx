@@ -1,14 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { User } from "@/lib/auth";
 import { UserInfo } from "./user-info";
 import { UserProfileLoader } from "./user-profile-loader";
+import { useAuth } from "@/contexts/auth-provider";
 
-interface UserProfileProps {
-  user: User | null;
-  isLoading: boolean;
-}
+export function UserProfile() {
+  const { user, isLoading } = useAuth();
 
-export function UserProfile({ user, isLoading }: UserProfileProps) {
   if (isLoading) {
     return <UserProfileLoader />;
   }
